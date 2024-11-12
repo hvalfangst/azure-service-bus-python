@@ -34,6 +34,26 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Receive messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/queue/messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"queue",
+						"messages"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
