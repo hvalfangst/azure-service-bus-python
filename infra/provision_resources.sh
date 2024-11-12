@@ -55,7 +55,8 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Display the connection string (useful for development purposes; in production, handle this securely)
+echo -e "\n\n - - - - | ALL RESOURCES WERE SUCCESSFULLY PROVISIONED | - - - - \n\n"
+
+# Display the connection string (ONLY for local use - do not blindly deploy this script)
 echo -e "\nService Bus namespace connection string: \n\n$CONNECTION_STRING"
 
-echo -e "\n\n - - - - | ALL RESOURCES WERE SUCCESSFULLY PROVISIONED | - - - - \n\n"

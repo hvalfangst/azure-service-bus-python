@@ -42,3 +42,31 @@ QUEUE_NAME=hvalfangstqueue
 ## Deallocate resources
 
 The shell script [delete_resources](infra/delete_resources.sh) deletes our Azure service bus queue, namespace and resource group.
+
+## Client config
+
+Once you have provisioned the Azure resources, there is one last configuration file which has to be created. The file **service_bus_config.env** is expected to exist in the
+[client](client) directory. It is used by our service bus [configuration](client/config/service_bus.py) class, which reads values from aforementioned files and maps them to it accordingly.
+It contains the means to reach our Service Bus Namespace.
+
+### Structure of 'client/service_bus_config.env'
+```bash
+CONNECTION_STRING={TO_BE_SET_BY_YOU_MY_FRIEND}
+QUEUE_NAME=hvalfangstqueue
+```
+
+You can get hold of the namespace connection string either by peeking in your terminal logs as it was actually echoed (yes, I know) as part of our [infrastructure provisioning](infra/provision_resources.sh)
+OR you can go for **ClickOps** approach and copy it from the **Shared access policies** under your **Service Bus Namespace** on Azure - as the screenshot below illustrates.
+
+![img.png](images/service_bus_namespace_sas.png)
+
+
+## Running API
+
+The shell script [run_client](client/run_client.sh) creates a new virtual environment based on our [requirements](client/requirements.txt) file and serves our
+API on port 8000 using uvicorrn.
+
+
+
+A [Postman Collection](client/postman) has been provided,
+which contains example requests for interacting with our [queue](client/routers/queue.py).
